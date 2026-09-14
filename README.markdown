@@ -46,6 +46,11 @@
 
 <img src="https://breadripper.pages.dev/hypgift.png" alt="图片alt" title="null">
 
+# 设计轻而易举啊
+
+<img src=“https://breadripper.pages.dev/design.png” alt="图片alt" title="null">
+
+
 ---
 
 # 📜 联合国安理会五常宪法文献（中英俄法）
