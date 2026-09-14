@@ -11,3 +11,20 @@ rust-corpus/** linguist-detectable=true
 csharp/**/*.cs -linguist-vendored -linguist-generated -linguist-documentation
 csharp/**/*.cs linguist-detectable=true
 *.cs linguist-language=C#
+
+# ── rust-corpus: statistics scope ───────────────────────────────────────────────
+# The blanket rule above forces *every* file under rust-corpus/ to count as code. That
+# includes READMEs, license texts and Cargo manifests, which are documentation/metadata
+# rather than source. They stay in the tree — license texts must stay — but they should not
+# be counted as code. Later lines win in gitattributes, so these narrow the override back to
+# Linguist's normal classification for non-source files.
+rust-corpus/**/*.md    linguist-documentation
+rust-corpus/**/*.txt   linguist-documentation
+rust-corpus/**/*.toml  linguist-documentation
+rust-corpus/**/LICENSE*  linguist-documentation
+rust-corpus/**/LICENCE*  linguist-documentation
+rust-corpus/**/COPYING*  linguist-documentation
+rust-corpus/**/NOTICE*   linguist-documentation
+rust-corpus/**/AUTHORS*  linguist-documentation
+rust-corpus/**/COPYRIGHT* linguist-documentation
+rust-corpus/**/CHANGELOG* linguist-documentation
